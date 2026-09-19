@@ -37,6 +37,20 @@ const blankIssue = (): IssueInput => ({
   reproductionSteps: '',
 })
 
+function issueToInput(issue: Issue): IssueInput {
+  return {
+    title: issue.title,
+    component: issue.component,
+    status: issue.status,
+    severity: issue.severity,
+    priority: issue.priority,
+    reporter: issue.reporter,
+    environment: issue.environment,
+    description: issue.description,
+    reproductionSteps: issue.reproductionSteps,
+  }
+}
+
 export function IssueForm({
   issue,
   saving,
@@ -47,12 +61,7 @@ export function IssueForm({
   const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
-    if (issue) {
-      const { id: _id, createdAt: _createdAt, updatedAt: _updatedAt, ...input } = issue
-      setForm(input)
-    } else {
-      setForm(blankIssue())
-    }
+    setForm(issue ? issueToInput(issue) : blankIssue())
     setSubmitted(false)
   }, [issue])
 
