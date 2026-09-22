@@ -80,6 +80,37 @@ npm install
 npm run dev
 ```
 
+## Verify changes
+
+Before committing changes, run the automated tests for the area you modified.
+
+### Backend tests
+
+```bash
+cd backend
+mvn test
+```
+
+### Frontend tests
+
+```bash
+cd frontend
+npm install
+npm test
+```
+
+For active frontend development, Vitest can also run in watch mode:
+
+```bash
+npm run test:watch
+```
+
+To verify that the production frontend bundle still compiles:
+
+```bash
+npm run build
+```
+
 ## Portfolio value
 
 IssueForge demonstrates React component architecture, TypeScript, asynchronous server-state management, Java/Spring Boot API design, validation, relational data persistence, automated testing, containerization, and CI.
